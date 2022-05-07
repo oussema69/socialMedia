@@ -7,6 +7,11 @@ import { PostComponent } from './compnment/post/post.component';
 import {AppRoutingModule} from "./app-routing.module";
 import { AccueilComponent } from './compnment/accueil/accueil.component';
 import { FollowersComponent } from './compnment/followers/followers.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SinglePostComponent } from './compnment/accueil/single-post/single-post.component';
+import { SingleCmntComponent } from './compnment/accueil/single-cmnt/single-cmnt.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -14,11 +19,16 @@ import { FollowersComponent } from './compnment/followers/followers.component';
     ProfileComponent,
     PostComponent,
     AccueilComponent,
-    FollowersComponent
+    FollowersComponent,
+ 
+    SinglePostComponent,
+      SingleCmntComponent
   ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

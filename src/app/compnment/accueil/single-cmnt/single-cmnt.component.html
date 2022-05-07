@@ -1,0 +1,11 @@
+<div class="timeline-comment">
+    <div class="timeline-comment-header">
+        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" />
+        <p>{{ comment.userCommenter.username }} <small>1 hour ago</small></p>
+    </div>
+    <p class="timeline-comment-text">
+        {{ comment.sujetCommentaire }}
+    </p>
+
+    <button class="btn btn-danger" (click)="delete()">delete</button>
+</div>
