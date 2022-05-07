@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-single-post',
@@ -14,10 +15,12 @@ likes=[];
 cmt : any;
 
 deleteCmtE : any;
-  constructor(private service : PostService) { }
+  closeResult: string = '';
+  modal: any;
+  constructor(private service : PostService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.service.getPostCommnets(this.post.id).subscribe(res=>{this.comments = res 
+    this.service.getPostCommnets(this.post.id).subscribe(res=>{this.comments = res
     console.log(this.comments)})
 
     this.service.getLikes(this.post.id).subscribe(res =>{this.likes = res})
@@ -29,7 +32,7 @@ deleteCmtE : any;
      const like = {
       post: this.post,
       user :this.post.poster,
-      type: true 
+      type: true
     }
     this.service.likePost(this.post.id , like).subscribe(res =>{
       this.service.getLikes(this.post.id).subscribe(res => this.likes = res)
@@ -51,7 +54,7 @@ deleteCmtE : any;
     }
     this.cmt = ''
     this.service.comment(this.post.id,comment).subscribe(res =>{
-      this.service.getPostCommnets(this.post.id).subscribe(res=>{this.comments = res 
+      this.service.getPostCommnets(this.post.id).subscribe(res=>{this.comments = res
         console.log(this.comments)})
     })
   }
@@ -63,5 +66,30 @@ deleteCmtE : any;
           this.comments = res
         })
     })
+  }
+
+
+
+  open(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 }

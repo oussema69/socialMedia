@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './compnment/profile/profile.component';
@@ -20,7 +21,7 @@ import { FormsModule } from '@angular/forms';
     PostComponent,
     AccueilComponent,
     FollowersComponent,
- 
+
     SinglePostComponent,
       SingleCmntComponent
   ],
@@ -28,7 +29,9 @@ import { FormsModule } from '@angular/forms';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+      NgbModule,
+
     ],
   providers: [],
   bootstrap: [AppComponent]
