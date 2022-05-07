@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { PostService } from 'src/app/services/post.service';
+=======
+import { PostService } from 'src/app/service/post.service';
+>>>>>>> ccaa32c91ae274e7c0d4b08e0dcf8f33a12cfbba
 
 @Component({
   selector: 'app-accueil',
@@ -7,6 +11,7 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
+<<<<<<< HEAD
   posts:any = []
   post : any;
   constructor(private service : PostService) { }
@@ -37,8 +42,22 @@ export class AccueilComponent implements OnInit {
       this.getPosts()
 
     }, err => console.log(err))
-  }
+=======
+  allpost!:any[];
+  constructor(private service:PostService) { }
 
+  ngOnInit(): void {
+    this.getAllPost()
+>>>>>>> ccaa32c91ae274e7c0d4b08e0dcf8f33a12cfbba
+  }
+getAllPost(){
+ this.service.getAllPosts().subscribe(
+   res=>{
+     this.allpost=res;
+   }
+ )
+
+<<<<<<< HEAD
   getPosts(){
     this.service.getAllPosts().pipe().subscribe(
       data=> {this.posts = data 
@@ -46,4 +65,10 @@ export class AccueilComponent implements OnInit {
       err =>console.log(err)
     )
   }
+=======
+ }
+>>>>>>> ccaa32c91ae274e7c0d4b08e0dcf8f33a12cfbba
 }
+
+
+
